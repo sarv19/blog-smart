@@ -5,6 +5,7 @@ import Link from 'next/link';
 import useScroll from '@/lib/hooks/use-scroll';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
 export default function NavBar() {
   const scrolled = useScroll(false);
@@ -13,8 +14,8 @@ export default function NavBar() {
   return (
     <>
       <div
-        className={`fixed top-0 flex w-full justify-center px-5 md:px-10 lg:px-14 ${
-          scrolled ? 'border-b border-gray-200/60 bg-white' : 'bg-white'
+        className={`fixed top-0 flex w-full justify-center px-5 md:px-10 lg:px-14 border-b border-gray-200/60 bg-white ${
+          scrolled ? 'backdrop-blur bg-opacity-70 border-b-0' : 'bg-white'
         } z-30 transition-all`}
       >
         <div className='flex h-16 w-full max-w-7xl items-center justify-between'>
@@ -26,16 +27,12 @@ export default function NavBar() {
               height='30'
               className='mr-2 rounded-sm'
             ></Image>
-            <Image
-              src='/typeface.svg'
-              alt='TechWave logo'
-              width='150'
-              height='30'
-              className='mr-2 rounded-sm'
-            ></Image>
-            <p className='font-medium'>TechWave</p>
+            <p className='font-medium text-[#5E17EB] tracking-widest'>TechWave</p>
           </Link>
-          <div className='hidden gap-8 md:flex'></div>
+          <div className='hidden gap-8 md:flex'>
+            <Button variant="ghost">Sign in</Button>
+            <Button className="rounded-2xl">Get Started</Button>
+          </div>
           <div
             className='-mr-2 cursor-pointer p-2 md:hidden'
             onClick={() => setShowDropdownMenu(!showDropdownMenu)}
@@ -58,9 +55,8 @@ export default function NavBar() {
       >
         {/*<div className="py-5 border-b">About Us</div>*/}
         <div className='border-b py-5'>
-          <Link href='https://blog.new.software' target='_blank'>
-            Blog
-          </Link>
+          <Button variant="ghost">Sign in</Button>
+          <Button>Get Started</Button>
         </div>
       </div>
     </>
