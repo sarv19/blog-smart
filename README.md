@@ -2,6 +2,8 @@
 
 This is an AI-powered blogging platform built with Supabase, Next.js, and TailwindCSS. Users can create, read, and like blog posts. The application integrates OpenAI API for content summarization.
 
+Preview: https://sarah-techwave.vercel.app/blog
+
 ## Features
 
 - User authentication using Supabase.
