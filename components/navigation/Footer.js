@@ -6,10 +6,10 @@ const caveat = Caveat({ subsets: ['latin'] });
 
 const Footer = () => {
     return (
-        <div className='relative flex flex-col items-center border-t gap-4 pt-10 pb-32 text-xs'>
+        <div className='relative flex flex-col items-center border-t gap-4 pt-10 pb-20 md:pb-32 text-xs'>
             <div className="bg-white dark:bg-gray-900">
                 <div className="mx-auto w-full">
-                    <div className="grid grid-cols-2 gap-20 px-4 pb-20 md:grid-cols-4">
+                    <div className="grid grid-cols-2 gap-20 px-4 pb-10 md:pb-20 md:grid-cols-4">
                         <div>
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
                             <ul className="text-gray-500 dark:text-gray-400 font-medium">

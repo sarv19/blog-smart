@@ -59,16 +59,16 @@ const mockHeadlines = [
 
 const HomePage = () => {
   return (
-    <div className="w-full max-w-5xl mx-auto">
-      <div className="font-bold text-7xl mt-32">TechWave Blog</div>
+    <div className="w-full max-w-5xl px-10 md:px-20 lg:px-5 mx-auto">
+      <div className="font-bold text-5xl md:text-7xl mt-32">TechWave Blog</div>
       <Feature />
-      <div className="flex gap-20 mb-20">
-        <div className="w-[40%] relative">
-          <div className="sticky top-[300px]">
+      <div className="flex flex-col lg:flex-row gap-10 md:gap-20 mb-10 md:mb-20">
+        <div className="w-full lg:w-[40%] relative">
+          <div className="lg:sticky top-[300px]">
             <Newsletter />
           </div>
         </div>
-        <div className="w-[60%]">
+        <div className="w-full lg:w-[60%]">
           {mockHeadlines.map((item, index) => <ArticleItem key={index} item={item} img={`/thumbnails/${index}.avif`}/>)}
         </div>
       </div>

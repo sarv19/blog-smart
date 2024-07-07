@@ -9,8 +9,8 @@ const Feature = () => {
     const title = "Unbreakable bonds: Why robots will never rule the world";
 
     return (
-        <div className="py-12 flex gap-20 text-sm">
-            <div className="w-[70%] h-full mt-12">
+        <div className="py-12 flex flex-col lg:flex-row gap-10 md:gap-20 text-sm">
+            <div className="w-full lg:w-[70%] h-full mt-12">
                 <Image 
                     alt="feature-image"
                     src={"/feature-img.avif"}
@@ -19,7 +19,7 @@ const Feature = () => {
                     className="w-full h-fit rounded-xl"
                 />
             </div>
-            <div className="w-[30%] flex flex-col gap-4">
+            <div className="w-full lg:w-[30%] flex flex-col gap-4">
                 <Badge className="w-fit text-[#5E17EB] bg-purple-200 rounded-xl">Feature</Badge>
                 <Link href={`/blog/${title.replace(/\s+/g, '-').toLowerCase()}`} className="font-semibold text-3xl leading-9">{title}</Link>
                 <Avatar />
