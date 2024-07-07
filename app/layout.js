@@ -1,8 +1,9 @@
-import { Inter } from 'next/font/google';
+import { Raleway } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
+import { Suspense } from 'react';
 
-const inter = Inter({ subsets: ['latin'] });
+const raleway = Raleway({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'TechWave | Navigating the Currents of Technological Innovation',
@@ -24,8 +25,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
-      <Toaster />
+        <body className={raleway.className}>
+          <Suspense fallback="...">
+            <Toaster />
+            {children}
+          </Suspense>
+        </body>
     </html>
   );
 }

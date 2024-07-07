@@ -4,7 +4,9 @@
     "node": true,
     "browser": true
   },
-  "plugins": ["prettier"],
+  "plugins": [
+    "prettier"
+  ],
   "rules": {
     "react-hooks/exhaustive-deps": "off"
     // Turns off the rule entirely
