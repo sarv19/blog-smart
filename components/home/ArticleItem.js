@@ -15,7 +15,7 @@ const ArticleItem = ({ item, img }) => {
                     alt="Article Image"
                     width={200}
                     height={80}
-                    className="w-full md:w-auto h-full rounded-md object-cover"
+                    className="w-full h-full rounded-md object-cover"
                 />
             </div>
             <div className="pb-9 flex-1 flex flex-col gap-4 border-b">

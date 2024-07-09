@@ -1,12 +1,12 @@
 import { Caveat } from 'next/font/google';
 import { Separator } from '@/components/ui/separator';
-import { Smile } from 'lucide-react';
+import Link from 'next/link';
 
 const caveat = Caveat({ subsets: ['latin'] });
 
 const Footer = () => {
     return (
-        <div className='relative flex flex-col items-center border-t gap-4 pt-10 pb-20 md:pb-32 text-xs'>
+        <div className='relative flex flex-col items-center border-t gap-4 pt-10 pb-20 md:pb-32 text-xs overflow-hidden'>
             <div className="bg-white dark:bg-gray-900">
                 <div className="mx-auto w-full">
                     <div className="grid grid-cols-2 gap-20 px-4 pb-10 md:pb-20 md:grid-cols-4">
@@ -88,11 +88,9 @@ const Footer = () => {
                 <Separator orientation="vertical" />
                 <div className='cursor-pointer'>Privacy Policy</div>
             </div>
-            <div className="footer-emoji">
-                <div className="image smile-icon">
-                    <img src="/rickroll.gif" loading="lazy" alt="" className="image-contain"/>
-                </div>
-            </div>
+            <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target='_blank' className='w-full flex justify-center'>
+                <img src="/rickroll.gif" loading="lazy" alt="" className="w-[5em] h-[5.8em] absolute -bottom-8 hover:bottom-0 transition-all duration-300 ease-in-out"/>
+            </Link>
         </div>
     )
 }

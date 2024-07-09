@@ -12,14 +12,19 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card"
+} from "@/components/ui/hover-card";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import Setting from '../user/Setting';
 
 const caveat = Caveat({ subsets: ['latin'] });
 
 export default function NavBar() {
   const scrolled = useScroll(false);
   const [user, setUser] = useState(null);
-  const [showDropdownMenu, setShowDropdownMenu] = useState(false);
 
   useEffect(() => {
     const getUser = async () => {
@@ -32,8 +37,6 @@ export default function NavBar() {
 
     getUser();
   }, []);
-
-  console.log({user})
 
   return (
     <>
@@ -67,10 +70,15 @@ export default function NavBar() {
                         className="rounded-full h-full w-auto object-cover"
                       /></HoverCardTrigger>
                     <HoverCardContent className="flex flex-col text-xs p-1 w-[150px] text-gray-600">
-                      <Link href={"/setting"} className='flex items-center gap-2 py-3 px-4 border-b hover:bg-gray-100 cursor-pointer'>
-                        <Settings width={15} height={15} />
-                        <div>Settings</div>
-                      </Link>
+                      <Dialog>
+                        <DialogTrigger href={"/setting"} className='flex items-center gap-2 py-3 px-4 border-b hover:bg-gray-100 cursor-pointer'>
+                          <Settings width={15} height={15} />
+                          <div>Settings</div>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <Setting />
+                        </DialogContent>
+                      </Dialog>
                       <div className='flex items-center gap-2 py-3 px-4 hover:bg-gray-100 cursor-pointer'>
                         <LogOut width={15} height={15} />
                         <div onClick={async () => {

@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Boxes } from "@/components/ui/background-boxes";
 import { isLocalPath } from "@/lib/utils";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import {
     Card,
@@ -18,10 +18,12 @@ import { Loader2 } from "lucide-react";
 import { login, signup } from "./actions";
 import { Caveat } from 'next/font/google';
 import Image from "next/image";
+import { supabase } from "@/lib/supabase/client";
 
 const caveat = Caveat({ subsets: ['latin'] });
 
 const Signin = () => {
+    const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState({ login: false, signup: false });
@@ -31,6 +33,17 @@ const Signin = () => {
     const searchParams = useSearchParams();
 
     const redirectUrl = searchParams.get("redirect");
+
+    useEffect(() => {
+        const getUser = async () => {
+          const {
+            data: { user },
+          } = await supabase.auth.getUser();
+          if (user && user.id) router.push("/");
+        };
+    
+        getUser();
+      }, []);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
