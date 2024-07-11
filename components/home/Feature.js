@@ -11,7 +11,7 @@ const Feature = () => {
     return (
         <div className="py-12 flex flex-col lg:flex-row gap-10 md:gap-20 text-sm">
             <div className="w-full lg:w-[70%] h-full mt-12">
-                <Image 
+                <Image
                     alt="feature-image"
                     src={"/feature-img.avif"}
                     width={300}
@@ -20,17 +20,31 @@ const Feature = () => {
                 />
             </div>
             <div className="w-full lg:w-[30%] flex flex-col gap-4">
-                <Badge className="w-fit text-[#5E17EB] bg-purple-200 rounded-xl">Feature</Badge>
-                <Link href={`/blog/${title.replace(/\s+/g, '-').toLowerCase()}`} className="font-semibold text-3xl leading-9">{title}</Link>
+                <Badge className="w-fit text-[#5E17EB] bg-purple-200 rounded-xl">
+                    Feature
+                </Badge>
+                <Link
+                    href={`/blog/${title.replace(/\s+/g, "-").toLowerCase()}`}
+                    className="font-semibold text-3xl leading-9"
+                >
+                    {title}
+                </Link>
                 <Avatar />
-                <Separator/>
+                <Separator />
                 <div className="text-gray-500">
-                    Discover why robots will never dominate our world. From emotions to ethical dilemmas, explore what sets humanity apart and keeps us in control of our destiny.
+                    Discover why robots will never dominate our world. From
+                    emotions to ethical dilemmas, explore what sets humanity
+                    apart and keeps us in control of our destiny.
                 </div>
-                <Link href={`/blog/${title.replace(/\s+/g, '-').toLowerCase()}`} className="flex gap-2 items-center text-[#5E17EB]">Read more <SquareArrowOutUpRight width={15} height={15}/></Link>
+                <Link
+                    href={`/blog/${title.replace(/\s+/g, "-").toLowerCase()}`}
+                    className="flex gap-2 items-center text-[#5E17EB]"
+                >
+                    Read more <SquareArrowOutUpRight width={15} height={15} />
+                </Link>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Feature;

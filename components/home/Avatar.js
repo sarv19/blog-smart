@@ -1,4 +1,4 @@
-const { default: Image } = require("next/image")
+const { default: Image } = require("next/image");
 
 const Avatar = ({ name }) => {
     return (
@@ -6,13 +6,13 @@ const Avatar = ({ name }) => {
             <Image
                 alt="author img"
                 src={"/avatar.webp"}
-                width={15}
-                height={15}
+                width={30}
+                height={30}
                 className="rounded-full h-full w-auto object-cover"
             />
             {name || "Sarah V"}
         </div>
-    )
-}
+    );
+};
 
 export default Avatar;
