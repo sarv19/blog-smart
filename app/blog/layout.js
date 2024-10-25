@@ -18,6 +18,10 @@ export default function BlogLayout({ children }) {
             setUser(user);
         };
 
+        // const getUserInfo = async () => {
+
+        // }
+
         getUser();
     }, []);
 
