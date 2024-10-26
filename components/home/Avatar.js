@@ -1,11 +1,11 @@
 const { default: Image } = require("next/image");
 
-const Avatar = ({ name }) => {
+const Avatar = ({ name, src = "/avatar.webp" }) => {
     return (
-        <div className="flex items-center gap-2 text-gray-500">
+        <div className="flex items-center gap-2 text-gray-700">
             <Image
                 alt="author img"
-                src={"/avatar.webp"}
+                src={src}
                 width={30}
                 height={30}
                 className="rounded-full h-full w-auto object-cover"
