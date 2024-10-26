@@ -23,7 +23,7 @@ async function fetchYouTubeVideos(channelId: string) {
             const publishedAt = new Date(item.snippet.publishedAt);
             const diffInHours =
                 (now.getTime() - publishedAt.getTime()) / (1000 * 60 * 60);
-            return diffInHours <= 48;
+            return diffInHours <= 24;
         })
         .map((item: any) => ({
             title: item.snippet.title,
@@ -31,7 +31,7 @@ async function fetchYouTubeVideos(channelId: string) {
             description: item.snippet.description,
             url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
             channel_name: item.snippet.channelTitle,
-            type: "video",
+            type: "youtube",
         }));
 
     return videos;
@@ -48,20 +48,24 @@ async function insertVideosIntoSupabase(videos: any[]) {
 }
 
 Deno.serve(async (req) => {
-    const { name, channelId } = await req.json();
+    const { channelIds } = await req.json();
     let data;
 
-    if (channelId) {
+    if (channelIds && Array.isArray(channelIds)) {
         try {
-            const videos = await fetchYouTubeVideos(channelId);
-            await insertVideosIntoSupabase(videos);
-            data = { videos };
+            let allVideos = [];
+            for (const channelId of channelIds) {
+                const videos = await fetchYouTubeVideos(channelId);
+                allVideos = allVideos.concat(videos);
+            }
+            await insertVideosIntoSupabase(allVideos);
+            data = { videos: allVideos };
         } catch (error) {
             data = { error: error.message };
         }
     } else {
         data = {
-            message: `Hello ${name}!`,
+            message: `No data`,
         };
     }
 
@@ -78,6 +82,6 @@ Deno.serve(async (req) => {
   curl -i --location --request POST 'http://127.0.0.1:54321/functions/v1/fetch-youtube-videos' \
     --header 'Authorization: Bearer ' \
     --header 'Content-Type: application/json' \
-    --data '{"name":"Functions", "channelId":"YOUR_CHANNEL_ID"}'
+    --data '{"name":"Functions", "channelIds":["CHANNEL_ID_1", "CHANNEL_ID_2"]}'
 
 */
