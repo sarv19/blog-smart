@@ -1,16 +1,47 @@
 # TechWave
 
-This is an AI-powered blogging platform built with Supabase, Next.js, and TailwindCSS. Users can create, read, and like blog posts. The application integrates OpenAI API for content summarization.
+TechWave is a content aggregation platform built with Supabase, Next.js, and TailwindCSS. It provides a seamless experience for users to explore the latest articles and videos from top tech sources. The app updates daily with fresh content and ensures outdated posts are automatically removed.
 
 Preview: https://sarah-techwave.vercel.app/blog
 
 ## Features
 
-- User authentication using Supabase.
-- Create and publish blog posts.
-- Like functionality for posts.
-- Content summarization using OpenAI API.
-- Responsive design with TailwindCSS.
+#### Daily Content Fetching:
+- At 6 AM every day, the app collects articles from a curated list of tech websites, focusing on posts published in the last 24 hours.
+
+- Fetches the latest videos from selected YouTube tech channels.
+
+#### Content Aggregation:
+- Displays both articles and YouTube videos in a scrollable list.
+
+- Uses visual indicators (like colors) to differentiate between articles and videos.
+
+
+#### Automatic Cleanup:
+- Content older than 1 week is automatically deleted from the database.
+
+#### User Authentication with Supabase:
+- Users can log in to explore content and interact with the platform.
+
+#### Responsive Design:
+- Styled with TailwindCSS for a smooth experience across devices.
+
+## How the Platform Works
+### Daily Updates at 6 AM:
+
+- Every day at 6 AM, the app retrieves the latest articles from a predefined list of tech websites.
+- It also checks specified YouTube tech channels for new videos posted within the last 24 hours.
+### Content Storage and Cleanup:
+- Articles and videos are stored in a Supabase database.
+- Any content older than 7 days is automatically removed to keep the platform fresh.
+### Visual Differentiation:
+- Articles and videos are displayed together in a scrollable list.
+- YouTube videos are styled differently (e.g., different background or text color) to distinguish them from articles.
+### Interactive Experience:
+- Users can click on any article or video to be redirected to the original source.
+- User authentication is provided through Supabase, allowing for personalized interactions.
+### Responsive Design:
+- The UI is built with TailwindCSS, ensuring it works smoothly across devices and screen sizes.
 
 ## Technologies Used
 
@@ -18,6 +49,7 @@ Preview: https://sarah-techwave.vercel.app/blog
 - [Next.js](https://nextjs.org/) - React framework for frontend.
 - [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework.
 - [OpenAI API](https://beta.openai.com/docs/) - For AI content summarization.
+- YouTube Data API: For fetching the latest videos from tech channels.
 
 ## Setup Instructions
 
@@ -51,10 +83,13 @@ Preview: https://sarah-techwave.vercel.app/blog
 
 ## Usage
 
-- Login: Users can log in using their email and password.
-- Create Post: Logged-in users can create new blog posts, which are stored in Supabase.
-- Like Post: Users can like posts, with likes stored in Supabase.
-- AI Summarization: Users can input their OpenAI API key to enable content summarization for blog posts.
+### Login:
+Users can log in using their email and password.
+### View Content:
++ Browse the latest tech news articles and YouTube videos.
++ Click any item to visit the original post or video.
+### Content Refresh:
+- The app updates daily at 6 AM to ensure only the latest content is shown.
 
 ## Deployment
 
