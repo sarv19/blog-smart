@@ -5,11 +5,14 @@ import ArticleItem from "@/components/home/ArticleItem";
 import Feature from "@/components/home/Feature";
 import Newsletter from "@/components/home/Newsletter";
 import { supabase } from "@/lib/supabase/client";
+import { Loader } from "lucide-react";
 
 const HomePage = () => {
     const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         const getData = async () => {
             const { data: blogs, error: fetchError } = await supabase
                 .from("content")
@@ -22,6 +25,7 @@ const HomePage = () => {
             if (blogs) {
                 setData(blogs);
             }
+            setIsLoading(false);
         };
         getData();
     }, []);
@@ -39,6 +43,11 @@ const HomePage = () => {
                     </div>
                 </div>
                 <div className="w-full lg:w-[60%]">
+                    {isLoading && (
+                        <div className="w-full flex justify-center mt-8">
+                            <Loader className="w-4 h-4 animate-spin" />
+                        </div>
+                    )}
                     {data.map((item) => (
                         <ArticleItem key={item.id} itemData={item} />
                     ))}
